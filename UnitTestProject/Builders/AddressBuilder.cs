@@ -1,50 +1,38 @@
-﻿using DomainModels;
+﻿namespace UnitTestProject.Builders;
 
-namespace UnitTestProject.Builders
+public class AddressBuilder
 {
-    public class AddressBuilder
+    private string _street = string.Empty;
+    private string _city = string.Empty;
+    private string _state = string.Empty;
+    private string _zipCode = string.Empty;
+
+    public AddressBuilder WithStreet(string street)
     {
-        private string _street;
-        private string _city;
-        private string _state;
-        private string _zipCode;
+        _street = street;
+        return this;
+    }
 
-        public AddressBuilder()
-        {
-            // set default values
-            _street = string.Empty;
-            _city = string.Empty;
-            _state = string.Empty;
-            _zipCode = string.Empty;
-        }
+    public AddressBuilder WithCity(string city)
+    {
+        _city = city;
+        return this;
+    }
 
-        public AddressBuilder WithStreet(string street)
-        {
-            _street = street;
-            return this;
-        }
+    public AddressBuilder WithState(string state)
+    {
+        _state = state;
+        return this;
+    }
 
-        public AddressBuilder WithCity(string city)
-        {
-            _city = city;
-            return this;
-        }
+    public AddressBuilder WithZipCode(string zipCode)
+    {
+        _zipCode = zipCode;
+        return this;
+    }
 
-        public AddressBuilder WithState(string state)
-        {
-            _state = state;
-            return this;
-        }
-
-        public AddressBuilder WithZipCode(string zipCode)
-        {
-            _zipCode = zipCode;
-            return this;
-        }
-
-        public Address Build()
-        {
-            return new Address(_street, _city, _state, _zipCode);
-        }
+    public Address Build()
+    {
+        return new Address(_street, _city, _state, _zipCode);
     }
 }
